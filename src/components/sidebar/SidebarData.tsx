@@ -7,12 +7,13 @@ import CreditCardSvg from "../svgs/CreditCardSvg";
 import LoanSvg from "../svgs/LoanSvg";
 import ServiceSvg from "../svgs/ServiceSvg";
 import PriviledgesSvg from "../svgs/PriviledgesSvg";
+import SettingsSvg from "../svgs/SettingsSvg";
 
 export const SidebarData = [
   {
     title: "Dashboard",
     icon: (active: boolean) => <HomeSvg active={active} />,
-    path: "/",
+    path: "/overview",
   },
   {
     title: "Transactions",
@@ -51,7 +52,7 @@ export const SidebarData = [
   },
   {
     title: "Setting",
-    icon: (active: boolean) => <InvestmentSvg active={active} />,
+    icon: (active: boolean) => <SettingsSvg active={active} />,
     path: "/setting",
   },
 ];

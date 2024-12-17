@@ -1,7 +1,7 @@
 import React from "react";
 
 const TaskLogoSvg = ({
-  width = "35",
+  width = "25",
   height = "35",
   fill = "#232323",
 }: {

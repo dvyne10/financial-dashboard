@@ -6,6 +6,8 @@ export const theme: DefaultTheme = {
     background: "#F5F7FA",
     whiteBG: "#FFFFFF",
     inActiveTextLink: "#B1B1B1",
+    iconBG: "#F5F7FA",
+    lightText: "#8BA3CB",
   },
   breakpoints: {
     mobile: "480px",
@@ -21,6 +23,8 @@ declare module "styled-components" {
       background: string;
       whiteBG: string;
       inActiveTextLink: string;
+      iconBG: string;
+      lightText: string;
     };
     breakpoints: {
       mobile: string;
