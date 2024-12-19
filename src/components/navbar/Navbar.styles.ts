@@ -16,6 +16,7 @@ export const NavbarContainer = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
     padding-block: 20px;
+    height:auto
   }
 `;
 

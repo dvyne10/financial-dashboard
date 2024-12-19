@@ -39,7 +39,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     handleResize(); // Initial check
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  },[]);
 
   return (
     <AppContext.Provider

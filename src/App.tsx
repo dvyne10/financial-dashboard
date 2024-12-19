@@ -12,7 +12,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <div style={{ display: "flex", minHeight: "100vh" }}>
+      <div style={{ display: "flex", minHeight: "100vh", width: "100vw" }}>
         <Sidebar />
         <div
           style={{
@@ -27,7 +27,6 @@ function App() {
             style={{
               display: "flex",
               flexGrow: 1,
-              // marginLeft: isSideNavOpen ? "250px" : "100px",
             }}
           >
             <Routes>
