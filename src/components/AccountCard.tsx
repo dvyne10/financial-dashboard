@@ -74,6 +74,14 @@ export default AccountCard;
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
 `;
 
 const CardContainer = styled.div<{ bgColor: string; transparent: boolean }>`
@@ -88,12 +96,10 @@ const CardContainer = styled.div<{ bgColor: string; transparent: boolean }>`
   padding: 24px 24px 20px 26px;
   border: 1px solid
     ${({ theme, transparent }) => (transparent ? theme.colors.border : "none")};
-  margin-right: 30px;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 225px;
     height: 137px;
     padding: 17px 20px 20px 17px;
-    margin-right: 20px;
   }
 `;
 

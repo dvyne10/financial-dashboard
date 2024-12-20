@@ -16,7 +16,12 @@ export const theme: DefaultTheme = {
     otherIcon: "#E7EDFF",
     cashIcon: "#DCFAF8",
     crText: "#FF4B4A",
-    drText:"#41D4A8"
+    drText: "#41D4A8",
+    barBlue: "#396AFF",
+    barBlack: "#232323",
+    gridLineColor: "#F3F3F5",
+    darkBluePieColor: "#343C6A",
+    orangePieColor: "#FC7900",
   },
   breakpoints: {
     mobile: "480px",
@@ -43,6 +48,11 @@ declare module "styled-components" {
       cashIcon: string;
       crText: string;
       drText: string;
+      barBlue: string;
+      barBlack: string;
+      gridLineColor: string;
+      darkBluePieColor: string;
+      orangePieColor: string;
     };
     breakpoints: {
       mobile: string;

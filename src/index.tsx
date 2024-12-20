@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
+import './chartConfig';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

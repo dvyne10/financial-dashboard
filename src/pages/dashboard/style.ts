@@ -15,7 +15,6 @@ export const Container = styled.div<{
 `;
 
 export const CardHolder = styled.div`
-  //   height: 300px;
   margin-right: 30px;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: calc(100vw - 2rem);
@@ -58,3 +57,48 @@ export const RecentTransactionsCard = styled.div`
     display: none;
   }
 `;
+
+export const MiddleSection = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const BarChartWrapper = styled.div`
+  width: 730px;
+  height: 322px;
+  top: 45px;
+  gap: 0px;
+  border-radius: 25px;
+  opacity: 0px;
+  transition: all 0.3s ease;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  box-sizing: border-box;
+  margin-right: 30px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+  }
+`;
+
+export const PieChartWrapper = styled.div`
+  width: 350px;
+  height: 322px;
+  top: 45px;
+  gap: 0px;
+  border-radius: 25px;
+  opacity: 0px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: "0 auto",
+`;
+
+export const BottomSection = styled.div`
+
+`
