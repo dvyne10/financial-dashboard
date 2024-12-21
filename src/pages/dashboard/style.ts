@@ -18,6 +18,7 @@ export const Container = styled.div<{
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
+    //  width: calc(100vw - 2rem - 105px);
   }
 `;
 
@@ -103,6 +104,7 @@ export const BarChartWrapper = styled.div`
   @media (max-width: 480px) {
     width: 100%;
     background-color: transparent;
+    height: auto;
   }
 `;
 
@@ -137,12 +139,13 @@ export const QuickTransferContaier = styled.div`
   border-radius: 25px;
   padding: 35px 25px;
   box-sizing: border-box;
-  margin-right: 30px;
+  // margin-right: 30px;
   @media (max-width: 768px) {
     width: 400px;
     height: 276px;
   }
   @media (max-width: 480px) {
+    width: 380px;
     height: 195px;
     background: transparent;
     margin-right: 0px;
@@ -187,6 +190,11 @@ export const RightChevronButton = styled.div`
   top: 30%;
   margin-right: 10px;
   background-color: white;
+  @media (max-width: 480px) {
+    margin-right: 6px;
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -229,6 +237,9 @@ export const TextInput = styled.input`
   &::placeholder {
     color: ${({ theme }) => theme.colors.lightCardText};
   }
+  @media (max-width: 480px) {
+    font-size: 13px;
+  }
 `;
 
 export const SendButton = styled.button`
@@ -259,7 +270,6 @@ export const SendButton = styled.button`
 export const InputDescriptionLable = styled.div`
   font-size: 16px;
   font-weight: 400;
-  line-height: 19.36px;
   text-align: left;
   color: ${({ theme }) => theme.colors.lightCardText};
   @media (max-width: 480px) {

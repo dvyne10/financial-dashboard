@@ -39,7 +39,7 @@ const ContactCardWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   @media (max-width: 480px) {
-    margin-right: 20px;
+    margin-right: 10px;
   }
 `;
 
