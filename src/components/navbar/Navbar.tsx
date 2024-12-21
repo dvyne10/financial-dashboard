@@ -19,7 +19,7 @@ import NotificationSvg from "../svgs/NotificationSvg";
 
 const Navbar = () => {
   const location = useLocation();
-  const { setIsSideNavOpen, isSideNavOpen, isMobile } = useTheme();
+  const { setIsSideNavOpen, isSideNavOpen, isMobile,isTablet } = useTheme();
 
   return (
     <>
@@ -38,11 +38,11 @@ const Navbar = () => {
               location.pathname.replace("/", "").slice(1)}
           </NavElement>
           <NavbarSubContainer>
-            <Search style={{ display: isMobile ? "none" : "flex" }} />
-            <CircleWithIcon style={{ display: isMobile ? "none" : "flex" }}>
+            <Search style={{ display: isMobile || isTablet ? "none" : "flex" }} />
+            <CircleWithIcon style={{ display: isMobile || isTablet ? "none" : "flex" }}>
               <SettingClear />
             </CircleWithIcon>
-            <CircleWithIcon style={{ display: isMobile ? "none" : "flex" }}>
+            <CircleWithIcon style={{ display: isMobile || isTablet ? "none" : "flex" }}>
               <NotificationSvg />
             </CircleWithIcon>
             <ProfilePic>
@@ -52,7 +52,7 @@ const Navbar = () => {
         </NavItem>
         <NavItem
           style={{
-            display: isMobile ? "block" : "none",
+            display: isMobile || isTablet ? "block" : "none",
           }}
         >
           <Search />

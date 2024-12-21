@@ -73,13 +73,15 @@ const AccountCard: React.FC<CardProps> = ({
 export default AccountCard;
 
 const Wrapper = styled.div`
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
+  // gap: 20px;
+  flex-shrink: 0;
   &:not(:last-child) {
-    margin-right: 30px;
+    // margin-right: 30px;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     &:not(:last-child) {
-      margin-right: 20px;
+      // margin-right: 20px;
     }
   }
 `;

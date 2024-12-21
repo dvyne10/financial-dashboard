@@ -8,7 +8,13 @@ import Navbar from "./components/navbar/Navbar";
 import { useTheme } from "./hooks/useTheme";
 
 function App() {
-  const { isSideNavOpen, isMobile } = useTheme();
+  const { isSideNavOpen, isMobile, isTablet } = useTheme();
+  console.log(isSideNavOpen, isMobile, isTablet)
+  const computeMarginLeft = () => {
+    if (isMobile) return "0px";
+    if (isTablet) return "70px";
+    return isSideNavOpen ? "250px" : "70px";
+  };
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -19,7 +25,7 @@ function App() {
             display: "flex",
             flexDirection: "column",
             flexGrow: 1,
-            marginLeft: isSideNavOpen ? "250px" : isMobile ? "0" : "100px",
+            marginLeft: computeMarginLeft(),
           }}
         >
           <Navbar />

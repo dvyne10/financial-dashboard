@@ -22,6 +22,8 @@ export const theme: DefaultTheme = {
     gridLineColor: "#F3F3F5",
     darkBluePieColor: "#343C6A",
     orangePieColor: "#FC7900",
+    secTextInputColor: "#EDF1F7",
+    charcoal: "#777777",
   },
   breakpoints: {
     mobile: "480px",
@@ -53,6 +55,8 @@ declare module "styled-components" {
       gridLineColor: string;
       darkBluePieColor: string;
       orangePieColor: string;
+      secTextInputColor: string;
+      charcoal: string;
     };
     breakpoints: {
       mobile: string;

@@ -13,10 +13,12 @@ import TaskLogoSvg from "../svgs/TaskLogoSvg";
 import { useTheme } from "../../hooks/useTheme";
 
 const Sidebar: React.FC = () => {
-  const { setIsSideNavOpen, isSideNavOpen } = useTheme();
+  const { setIsSideNavOpen, isSideNavOpen, isTablet } = useTheme();
   const location = useLocation();
 
-  const toggleSidebar = () => setIsSideNavOpen(!isSideNavOpen);
+  const toggleSidebar = () => {
+    if (!isTablet) setIsSideNavOpen(!isSideNavOpen);
+  };
 
   return (
     <SidebarContainer $isOpen={isSideNavOpen}>
@@ -24,7 +26,7 @@ const Sidebar: React.FC = () => {
         <SidebarToggle onClick={toggleSidebar}>
           <TaskLogoSvg />
         </SidebarToggle>
-        <p>Soar Task</p>
+        <p style={{ display: isSideNavOpen ? "block" : "none" }}>Soar Task</p>
       </SidebarHeader>
 
       <SidebarMenu>

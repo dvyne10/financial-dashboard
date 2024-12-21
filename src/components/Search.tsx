@@ -24,7 +24,8 @@ const Container = styled.div`
   padding: 0 1rem;
   display: flex;
   background-color: ${({ theme }) => theme.colors.background};
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    margin-top:20px;
     width: 90%;
   }
 `;

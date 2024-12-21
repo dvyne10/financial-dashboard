@@ -10,12 +10,11 @@ const BarChart: React.FC<{
   const depositData = data.map((item) => item.deposits);
   const withdrawalData = data.map((item) => item.withdrawals);
 
-
-const legendMargin: Plugin = {
+  const legendMargin: Plugin = {
     id: "legendMargin",
     beforeInit: function (chart: Chart) {
       const fitValue = chart.legend!.fit; // Store the original `fit` method
-  
+
       chart.legend!.fit = function fit() {
         fitValue.bind(chart.legend)(); // Call the original `fit` method
         this.height += 22; // Add custom margin
@@ -32,8 +31,8 @@ const legendMargin: Plugin = {
         backgroundColor: theme.colors.barBlack,
         borderRadius: 30,
         borderSkipped: false,
-        barPercentage: 0.6,
-        categoryPercentage: 0.5,
+        barPercentage: theme.breakpoints.mobile ? 0.5 : 0.6,
+        categoryPercentage: theme.breakpoints.mobile ? 0.4 : 0.5,
       },
       {
         label: "Withdraws",
@@ -41,8 +40,8 @@ const legendMargin: Plugin = {
         backgroundColor: theme.colors.barBlue,
         borderRadius: 30,
         borderSkipped: false,
-        barPercentage: 0.6,
-        categoryPercentage: 0.5,
+        barPercentage: theme.breakpoints.mobile ? 0.5 : 0.6,
+        categoryPercentage: theme.breakpoints.mobile ? 0.4 : 0.5,
       },
     ],
   };
@@ -84,14 +83,14 @@ const legendMargin: Plugin = {
         },
       },
     },
-    layout:{
-        padding:{
-            bottom:28
-        }
-    }
+    layout: {
+      padding: {
+        bottom: 28,
+      },
+    },
   } as ChartOptions<"bar">;
 
-  return <Bar data={chartData} options={options} plugins={[legendMargin]}/>;
+  return <Bar data={chartData} options={options} plugins={[legendMargin]} />;
 };
 
 export default BarChart;
