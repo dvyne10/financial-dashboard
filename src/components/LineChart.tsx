@@ -69,7 +69,11 @@ const LineChart = () => {
       },
     },
   } as ChartOptions<"line">;
-  return balanceHistory && <Line data={chartData} options={chartOptions} />;
+  return balanceHistory ? (
+    <Line data={chartData} options={chartOptions} />
+  ) : (
+    <></>
+  );
 };
 
 export default LineChart;
