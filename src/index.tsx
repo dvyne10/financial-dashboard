@@ -6,15 +6,14 @@ import { AppProvider } from "./context/AppContext";
 import './chartConfig';
 import { setupWorker } from 'msw/browser'
 import { handlers } from './mocks/server'
-import reportWebVitals from "./reportWebVitals";
 
 
 const worker = setupWorker(...handlers)
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== 'development') {
-    return
-  }
+  // if (process.env.NODE_ENV !== 'development') {
+  //   return
+  // }
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
   return await worker.start()
@@ -38,4 +37,4 @@ enableMocking().then(() => {root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();

@@ -96,13 +96,17 @@ export const BarChartWrapper = styled.div`
   opacity: 1;
   box-sizing: border-box;
   margin-right: 30px;
+
+  @media (max-width: 1000px) and (min-width: 769px) {
+    width: calc(100vw - 2rem - 280px);
+  }
   @media (max-width: 768px) {
-    width: calc(100vw - 2rem - 75px);
+    width: calc(100vw - 2rem - 250px);
     height: auto;
   }
 
   @media (max-width: 480px) {
-    width: 100%;
+    width: calc(100vw - 3rem);
     background-color: transparent;
     height: auto;
   }
@@ -145,7 +149,7 @@ export const QuickTransferContaier = styled.div`
     height: 276px;
   }
   @media (max-width: 480px) {
-    width: 380px;
+    width: 100%;
     height: 195px;
     background: transparent;
     margin-right: 0px;
@@ -284,8 +288,11 @@ export const LineChartWrapper = styled.div`
   background: white;
   padding: 35px 25px;
   box-sizing: border-box;
+  @media (max-width: 1000px) and (min-width: 769px) {
+    width: calc(100vw - 2rem - 280px);
+  }
   @media (max-width: 768px) {
-    width: calc(100vw - 2rem - 75px);
+    width: calc(100vw - 2rem - 250px);
     height: auto;
   }
 
