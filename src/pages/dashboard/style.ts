@@ -95,7 +95,6 @@ export const BarChartWrapper = styled.div`
   justify-content: center;
   opacity: 1;
   box-sizing: border-box;
-  margin-right: 30px;
 
   @media (max-width: 1000px) and (min-width: 769px) {
     width: calc(100vw - 2rem - 280px);
@@ -150,8 +149,10 @@ export const QuickTransferContaier = styled.div`
   }
   @media (max-width: 480px) {
     width: 100%;
-    height: 195px;
+    max-width: 340px;
+    height: auto;
     background: transparent;
+    padding: 20px;
     margin-right: 0px;
   }
 `;

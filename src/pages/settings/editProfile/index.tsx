@@ -344,6 +344,7 @@ const AvatarLabel = styled.label`
   align-items: center;
   justify-content: center;
   cursor: pointer; /* Make the label clickable */
+  position:relative
 `;
 
 const EditCircle = styled.div`

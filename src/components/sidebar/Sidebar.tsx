@@ -11,13 +11,19 @@ import {
 } from "./Sidebar.styles";
 import TaskLogoSvg from "../svgs/TaskLogoSvg";
 import { useTheme } from "../../hooks/useTheme";
+import RightChevron from "../svgs/RightChevronSvg";
+import { theme } from "../../styles";
 
 const Sidebar: React.FC = () => {
-  const { setIsSideNavOpen, isSideNavOpen, isTablet } = useTheme();
+  const { setIsSideNavOpen, isSideNavOpen, isTablet, isMobile } = useTheme();
   const location = useLocation();
 
   const toggleSidebar = () => {
     if (!isTablet) setIsSideNavOpen(!isSideNavOpen);
+  };
+
+  const closeSidebar = () => {
+    setIsSideNavOpen(false);
   };
 
   return (
@@ -26,7 +32,20 @@ const Sidebar: React.FC = () => {
         <SidebarToggle onClick={toggleSidebar}>
           <TaskLogoSvg />
         </SidebarToggle>
-        <p style={{ display: isSideNavOpen ? "block" : "none" }}>Soar Task</p>
+        <p
+          style={{
+            display: isSideNavOpen ? "block" : "none",
+            color: theme.colors.descriptionHeaderText,
+          }}
+        >
+          Soar Task
+        </p>
+        {isMobile && (
+          <RightChevron
+            style={{ transform: "rotate(180deg)" }}
+            onClick={closeSidebar}
+          />
+        )}
       </SidebarHeader>
 
       <SidebarMenu>
