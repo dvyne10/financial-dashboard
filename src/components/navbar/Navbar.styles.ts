@@ -25,6 +25,9 @@ export const NavbarSubContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 1.5rem;
+  margin: 0;
+  @media (max-width: 1000px) and (min-width: 769px) {
+  }
 `;
 
 export const NavbarToggle = styled.button`
@@ -41,14 +44,19 @@ export const NavItem = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin: 0;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     max-width: 84%;
   }
+    @media (max-width: 1000px) and (min-width: 769px) {
+    // width: calc(100% - 250px - 2rem)
+    }
 `;
 
 export const NavElement = styled.p`
-  font-weigth: 600;
+  font-weight: 600;
   font-size: 28px;
   display: flex;
   flex-direction: row;
+  flex-grow:1
 `;
