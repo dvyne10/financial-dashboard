@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { SidebarData } from "./SidebarData";
 import { NavLink, useLocation } from "react-router-dom";
 import {
@@ -9,37 +9,24 @@ import {
   SidebarToggle,
   MenuItemLabel,
 } from "./Sidebar.styles";
-import CollapsibleSvg from "../svgs/CollapsibleSvg";
 import TaskLogoSvg from "../svgs/TaskLogoSvg";
+import { useTheme } from "../../hooks/useTheme";
 
 const Sidebar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const { setIsSideNavOpen, isSideNavOpen, isTablet } = useTheme();
   const location = useLocation();
 
-  const toggleSidebar = () => setIsOpen((prev) => !prev);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsOpen(false); // Collapse on smaller screens
-      } else {
-        setIsOpen(true); // Expand on larger screens
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Initial check
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const toggleSidebar = () => {
+    if (!isTablet) setIsSideNavOpen(!isSideNavOpen);
+  };
 
   return (
-    <SidebarContainer $isOpen={isOpen}>
-      <SidebarHeader $isOpen={isOpen}>
+    <SidebarContainer $isOpen={isSideNavOpen}>
+      <SidebarHeader $isOpen={isSideNavOpen}>
         <SidebarToggle onClick={toggleSidebar}>
           <TaskLogoSvg />
         </SidebarToggle>
-        <p>Soar Task</p>
+        <p style={{ display: isSideNavOpen ? "block" : "none" }}>Soar Task</p>
       </SidebarHeader>
 
       <SidebarMenu>
@@ -53,7 +40,7 @@ const Sidebar: React.FC = () => {
               {item.icon && item.icon(location.pathname === item.path)}
               <MenuItemLabel
                 $active={location.pathname === item.path}
-                $isOpen={isOpen}
+                $isOpen={isSideNavOpen}
               >
                 {item.title}
               </MenuItemLabel>

@@ -14,13 +14,13 @@ export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
   z-index: 1000;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    width: ${({ $isOpen }) => ($isOpen ? "70%" : "70px")};
+    width: ${({ $isOpen }) => ($isOpen ? "70px" : "70px")};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     position: fixed;
-    width: ${({ $isOpen }) => ($isOpen ? "80%" : "0px")};
-    height: 100%;
+    width: ${({ $isOpen }) => ($isOpen ? "250px" : "0px")};
+    height: 100vh;
     overflow: hidden;
   }
 `;
@@ -97,7 +97,13 @@ export const MenuItemLabel = styled.span<{
 }>`
   display: ${({ $isOpen }) => ($isOpen ? "inline" : "none")};
   transition: opacity 0.3s;
-  //   color: ${({ theme }) => theme.colors.text};
   color: ${({ $active, theme }) =>
     $active ? theme.colors.text : theme.colors.inActiveTextLink};
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: none;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: inline;
+  }
 `;
