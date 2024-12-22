@@ -87,7 +87,7 @@ const Dashboard = () => {
         <CardHolder>
           <DescriptionTitle>{myCards}</DescriptionTitle>
           <CardWrapper>
-            {cardDetails?.slice(0, 2).map((card, index) => {
+            {cardDetails?.slice(0, 2)?.map((card, index) => {
               return (
                 <AccountCard
                   key={index}
@@ -104,7 +104,7 @@ const Dashboard = () => {
         <RecentTransactionsHoler>
           <DescriptionTitle>{recentTransactions}</DescriptionTitle>
           <RecentTransactionsCard>
-            {transactionData?.slice(0, 3).map((transaction, index) => {
+            {transactionData?.slice(0, 3)?.map((transaction, index) => {
               return (
                 <TransactionCard
                   paymentMethod={
