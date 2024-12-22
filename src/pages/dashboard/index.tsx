@@ -34,6 +34,7 @@ import SendSvg from "../../components/svgs/SendSvg";
 import LineChart from "../../components/LineChart";
 import { theme } from "../../styles";
 import { useUserData } from "../../hooks/useUserData";
+import Loading from "../../components/svgs/LoadingSvg";
 
 const Dashboard = () => {
   const { isSideNavOpen, isMobile, isTablet } = useTheme();
@@ -87,7 +88,7 @@ const Dashboard = () => {
         <CardHolder>
           <DescriptionTitle>{myCards}</DescriptionTitle>
           <CardWrapper>
-            {cardDetails &&
+            {isLoading ? <Loading/>:
               cardDetails?.slice(0, 2)?.map((card, index) => {
                 return (
                   <AccountCard
@@ -105,7 +106,7 @@ const Dashboard = () => {
         <RecentTransactionsHoler>
           <DescriptionTitle>{recentTransactions}</DescriptionTitle>
           <RecentTransactionsCard>
-            {transactionData &&
+            {isLoading ? <Loading/>:
               transactionData?.slice(0, 3)?.map((transaction, index) => {
                 return (
                   <TransactionCard
@@ -146,7 +147,7 @@ const Dashboard = () => {
           <QuickTransferContaier>
             <ContactCardWrapper>
               <ContactCardInnerWrapper ref={scrollWrapperRef}>
-                {frequentContacts &&
+                {isLoading ? <Loading/>:
                   frequentContacts?.map((contact, index) => {
                     return (
                       <ContactCard

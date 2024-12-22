@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles, theme } from "./styles";
 import { Route, Routes } from "react-router-dom";
@@ -12,6 +12,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import { UserDataProvider } from "./context/UserDataContext";
+import Loading from "./components/svgs/LoadingSvg";
 
 const queryClient = new QueryClient();
 
@@ -45,15 +46,23 @@ function App() {
                   flexGrow: 1,
                 }}
               >
-                <Routes>
-                  {routes.map((route, index) => (
-                    <Route
-                      key={index}
-                      path={route.path}
-                      element={route.element}
-                    />
-                  ))}
-                </Routes>
+                <Suspense
+                  fallback={
+                    <div style={{}}>
+                      <Loading />
+                    </div>
+                  }
+                >
+                  <Routes>
+                    {routes.map((route, index) => (
+                      <Route
+                        key={index}
+                        path={route.path}
+                        element={route.element}
+                      />
+                    ))}
+                  </Routes>
+                </Suspense>
               </div>
             </div>
           </div>

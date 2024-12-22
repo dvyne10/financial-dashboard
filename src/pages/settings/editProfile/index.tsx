@@ -131,7 +131,7 @@ const EditProfile: React.FC = () => {
                   message: "Password must be at least 8 characters long",
                 },
                 pattern: {
-                  value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+                  value: /^(?=.[A-Za-z])(?=.\d)[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
                     "Password must contain at least one letter, one number, and a minimum of 8 characters",
                 },
@@ -233,33 +233,35 @@ const EditProfile: React.FC = () => {
 export default EditProfile;
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: row;
-  gap: 22px;
-  flex-wrap: wrap;
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    flex-direction: column;
-  }
-`;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 
-const InputGroupWrapper = styled.div`
-  display: flex;
-  gap: 22px;
-  flex-wrap: wrap;
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    justify-content: center;
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr;
   }
 `;
 
 const FormDivs = styled.div`
-  display: flex;
-  gap: 22px;
-  flex-direction: column;
+  display: grid;
+  gap: 1.5rem;
+  width: 100%;
+`;
+
+const InputGroupWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
 `;
 
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const InputLabel = styled.label`
@@ -270,8 +272,7 @@ const InputLabel = styled.label`
 `;
 
 const TextInput = styled.input`
-  max-width: 418px;
-  width: 418px;
+  width: 100%;
   height: 50px;
   border-radius: 15px;
   border: ${({ theme }) => "1px solid " + theme.colors.border};
@@ -279,14 +280,6 @@ const TextInput = styled.input`
   box-sizing: border-box;
   &::placeholder {
     color: ${({ theme }) => theme.colors.lightCardText};
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    max-width: 385px;
-    width: 285px;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    max-width: 285px;
-    width: 285px;
   }
 `;
 
@@ -297,27 +290,25 @@ const SaveButton = styled.button`
   border: none;
   border-radius: 15px;
   cursor: pointer;
-  box-sizing: border-box;
-  max-width: 190px;
   height: 50px;
-  align-self: flex-end;
   width: 190px;
+  justify-self: end;
+  
   &:hover {
     background-color: #777777;
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
-    max-width: 100%;
   }
 `;
 
 const AvatarWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
   position: relative;
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    justify-content: center;
+  width: fit-content;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    justify-self: center;
   }
 `;
 
@@ -344,7 +335,6 @@ const AvatarLabel = styled.label`
   align-items: center;
   justify-content: center;
   cursor: pointer; /* Make the label clickable */
-  position:relative
 `;
 
 const EditCircle = styled.div`
