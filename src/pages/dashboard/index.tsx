@@ -87,36 +87,38 @@ const Dashboard = () => {
         <CardHolder>
           <DescriptionTitle>{myCards}</DescriptionTitle>
           <CardWrapper>
-            {cardDetails && cardDetails?.slice(0, 2)?.map((card, index) => {
-              return (
-                <AccountCard
-                  key={index}
-                  balance={card.balance}
-                  cardHolder={card.cardHolder}
-                  validThru={card.validThru}
-                  cardNumber={card.cardNumber}
-                  tranparent={card.transparent}
-                />
-              );
-            })}
+            {cardDetails &&
+              cardDetails?.slice(0, 2)?.map((card, index) => {
+                return (
+                  <AccountCard
+                    key={index}
+                    balance={card.balance}
+                    cardHolder={card.cardHolder}
+                    validThru={card.validThru}
+                    cardNumber={card.cardNumber}
+                    tranparent={card.transparent}
+                  />
+                );
+              })}
           </CardWrapper>
         </CardHolder>
         <RecentTransactionsHoler>
           <DescriptionTitle>{recentTransactions}</DescriptionTitle>
           <RecentTransactionsCard>
-            {transactionData && transactionData?.slice(0, 3)?.map((transaction, index) => {
-              return (
-                <TransactionCard
-                  paymentMethod={
-                    transaction.paymentMethod as "Card" | "Cash" | "Other"
-                  }
-                  depositDesc={transaction.depositDesc}
-                  depostiDate={transaction.depostiDate}
-                  depositAmnt={transaction.depositAmnt}
-                  depositType={transaction.depositType as "CR" | "DR"}
-                />
-              );
-            })}
+            {transactionData &&
+              transactionData?.slice(0, 3)?.map((transaction, index) => {
+                return (
+                  <TransactionCard
+                    paymentMethod={
+                      transaction.paymentMethod as "Card" | "Cash" | "Other"
+                    }
+                    depositDesc={transaction.depositDesc}
+                    depostiDate={transaction.depostiDate}
+                    depositAmnt={transaction.depositAmnt}
+                    depositType={transaction.depositType as "CR" | "DR"}
+                  />
+                );
+              })}
           </RecentTransactionsCard>
         </RecentTransactionsHoler>
       </Container>
@@ -126,7 +128,7 @@ const Dashboard = () => {
         <div>
           <DescriptionTitle>Weekly Activity</DescriptionTitle>
           <BarChartWrapper>
-            <BarChart data={activityData!} />
+            {activityData && <BarChart data={activityData!} />}
           </BarChartWrapper>
         </div>
         <div>
@@ -144,18 +146,19 @@ const Dashboard = () => {
           <QuickTransferContaier>
             <ContactCardWrapper>
               <ContactCardInnerWrapper ref={scrollWrapperRef}>
-                {frequentContacts?.map((contact, index) => {
-                  return (
-                    <ContactCard
-                      key={index}
-                      name={contact.name}
-                      profilePic={contact.profilePicture}
-                      role={contact.role}
-                      selected={selectedIndex === index}
-                      onClick={() => handleSelectContact(index)}
-                    />
-                  );
-                })}
+                {frequentContacts &&
+                  frequentContacts?.map((contact, index) => {
+                    return (
+                      <ContactCard
+                        key={index}
+                        name={contact.name}
+                        profilePic={contact.profilePicture}
+                        role={contact.role}
+                        selected={selectedIndex === index}
+                        onClick={() => handleSelectContact(index)}
+                      />
+                    );
+                  })}
               </ContactCardInnerWrapper>
               <RightChevronButton onClick={handleScrollRight}>
                 <RightChevron />
