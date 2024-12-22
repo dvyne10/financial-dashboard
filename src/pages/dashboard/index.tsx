@@ -26,30 +26,28 @@ import { useTheme } from "../../hooks/useTheme";
 import { myCards, recentTransactions } from "../../constants/strings";
 import TransactionCard from "../../components/TransactionCard";
 import { cardDetailsArray } from "../../data/creditCard";
-import { transactionData } from "../../data/transactions";
 import BarChart from "../../components/BarChart";
 import PieChart from "../../components/PieChart";
-import { frequentContacts } from "../../data/frequentTransfer";
 import ContactCard from "../../components/ContactCard";
 import RightChevron from "../../components/svgs/RightChevronSvg";
 import SendSvg from "../../components/svgs/SendSvg";
 import LineChart from "../../components/LineChart";
 import { theme } from "../../styles";
-
-const weeklyActivityData = [
-  { day: "Mon", deposits: 100, withdrawals: 50 },
-  { day: "Tue", deposits: 200, withdrawals: 80 },
-  { day: "Wed", deposits: 150, withdrawals: 60 },
-  { day: "Thu", deposits: 300, withdrawals: 90 },
-  { day: "Fri", deposits: 250, withdrawals: 70 },
-  { day: "Sat", deposits: 400, withdrawals: 100 },
-  { day: "Sun", deposits: 350, withdrawals: 120 },
-];
+import { useUserData } from "../../hooks/useUserData";
 
 const Dashboard = () => {
-  const { isSideNavOpen, isMobile,isTablet } = useTheme();
+  const { isSideNavOpen, isMobile, isTablet } = useTheme();
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const {
+    isLoading,
+    isError,
+    cardDetails,
+    frequentContacts,
+    transactionData,
+    activityData,
+  } = useUserData();
 
   const handleScrollRight = () => {
     console.log("here");
@@ -89,7 +87,7 @@ const Dashboard = () => {
         <CardHolder>
           <DescriptionTitle>{myCards}</DescriptionTitle>
           <CardWrapper>
-            {cardDetailsArray.slice(0, 2).map((card, index) => {
+            {cardDetails?.slice(0, 2).map((card, index) => {
               return (
                 <AccountCard
                   key={index}
@@ -106,14 +104,16 @@ const Dashboard = () => {
         <RecentTransactionsHoler>
           <DescriptionTitle>{recentTransactions}</DescriptionTitle>
           <RecentTransactionsCard>
-            {transactionData.slice(0, 3).map((transaction, index) => {
+            {transactionData?.slice(0, 3).map((transaction, index) => {
               return (
                 <TransactionCard
-                  paymentMethod={transaction.paymentMethod}
+                  paymentMethod={
+                    transaction.paymentMethod as "Card" | "Cash" | "Other"
+                  }
                   depositDesc={transaction.depositDesc}
                   depostiDate={transaction.depostiDate}
                   depositAmnt={transaction.depositAmnt}
-                  depositType={transaction.depositType}
+                  depositType={transaction.depositType as "CR" | "DR"}
                 />
               );
             })}
@@ -122,14 +122,14 @@ const Dashboard = () => {
       </Container>
 
       {/* Middle section */}
-      <MiddleSection style={{marginTop:20 }}>
-        <div >
+      <MiddleSection style={{ marginTop: 20 }}>
+        <div>
           <DescriptionTitle>Weekly Activity</DescriptionTitle>
           <BarChartWrapper>
-            <BarChart data={weeklyActivityData} />
+            <BarChart data={activityData!} />
           </BarChartWrapper>
         </div>
-        <div >
+        <div>
           <DescriptionTitle>Expense Statistics</DescriptionTitle>
           <PieChartWrapper>
             <PieChart />
@@ -144,7 +144,7 @@ const Dashboard = () => {
           <QuickTransferContaier>
             <ContactCardWrapper>
               <ContactCardInnerWrapper ref={scrollWrapperRef}>
-                {frequentContacts.map((contact, index) => {
+                {frequentContacts?.map((contact, index) => {
                   return (
                     <ContactCard
                       key={index}

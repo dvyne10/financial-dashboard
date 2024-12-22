@@ -25,8 +25,11 @@ const Container = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.colors.background};
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    margin-top:20px;
+    margin-top: 20px;
     width: 90%;
+  }
+  @media (max-width: 1000px) and (min-width: 769px) {
+    width: 7%;
   }
 `;
 
@@ -49,5 +52,9 @@ const Input = styled.input`
   &::placeholder {
     color: ${({ theme }) => theme.colors.lightText};
     opacity: 0.7;
+  }
+
+  @media (max-width: 1000px) and (min-width: 769px) {
+    display: none;
   }
 `;

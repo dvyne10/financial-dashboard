@@ -24,6 +24,7 @@ export const theme: DefaultTheme = {
     orangePieColor: "#FC7900",
     secTextInputColor: "#EDF1F7",
     charcoal: "#777777",
+    tabBorder: "#F4F5F7",
   },
   breakpoints: {
     mobile: "480px",
@@ -57,6 +58,7 @@ declare module "styled-components" {
       orangePieColor: string;
       secTextInputColor: string;
       charcoal: string;
+      tabBorder: string;
     };
     breakpoints: {
       mobile: string;

@@ -6,9 +6,9 @@ import { theme } from "../styles";
 const BarChart: React.FC<{
   data: { day: string; deposits: number; withdrawals: number }[];
 }> = ({ data }) => {
-  const labels = data.map((item) => item.day);
-  const depositData = data.map((item) => item.deposits);
-  const withdrawalData = data.map((item) => item.withdrawals);
+  const labels = data?.map((item) => item.day);
+  const depositData = data?.map((item) => item.deposits);
+  const withdrawalData = data?.map((item) => item.withdrawals);
 
   const legendMargin: Plugin = {
     id: "legendMargin",
