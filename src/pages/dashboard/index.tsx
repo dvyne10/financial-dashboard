@@ -34,6 +34,7 @@ import SendSvg from "../../components/svgs/SendSvg";
 import LineChart from "../../components/LineChart";
 import { theme } from "../../styles";
 import { useUserData } from "../../hooks/useUserData";
+import Loading from "../../components/svgs/LoadingSvg";
 
 const Dashboard = () => {
   const { isSideNavOpen, isMobile, isTablet } = useTheme();
@@ -87,36 +88,38 @@ const Dashboard = () => {
         <CardHolder>
           <DescriptionTitle>{myCards}</DescriptionTitle>
           <CardWrapper>
-            {cardDetails?.slice(0, 2).map((card, index) => {
-              return (
-                <AccountCard
-                  key={index}
-                  balance={card.balance}
-                  cardHolder={card.cardHolder}
-                  validThru={card.validThru}
-                  cardNumber={card.cardNumber}
-                  tranparent={card.transparent}
-                />
-              );
-            })}
+            {isLoading ? <Loading/>:
+              cardDetails?.slice(0, 2)?.map((card, index) => {
+                return (
+                  <AccountCard
+                    key={index}
+                    balance={card.balance}
+                    cardHolder={card.cardHolder}
+                    validThru={card.validThru}
+                    cardNumber={card.cardNumber}
+                    tranparent={card.transparent}
+                  />
+                );
+              })}
           </CardWrapper>
         </CardHolder>
         <RecentTransactionsHoler>
           <DescriptionTitle>{recentTransactions}</DescriptionTitle>
           <RecentTransactionsCard>
-            {transactionData?.slice(0, 3).map((transaction, index) => {
-              return (
-                <TransactionCard
-                  paymentMethod={
-                    transaction.paymentMethod as "Card" | "Cash" | "Other"
-                  }
-                  depositDesc={transaction.depositDesc}
-                  depostiDate={transaction.depostiDate}
-                  depositAmnt={transaction.depositAmnt}
-                  depositType={transaction.depositType as "CR" | "DR"}
-                />
-              );
-            })}
+            {isLoading ? <Loading/>:
+              transactionData?.slice(0, 3)?.map((transaction, index) => {
+                return (
+                  <TransactionCard
+                    paymentMethod={
+                      transaction.paymentMethod as "Card" | "Cash" | "Other"
+                    }
+                    depositDesc={transaction.depositDesc}
+                    depostiDate={transaction.depostiDate}
+                    depositAmnt={transaction.depositAmnt}
+                    depositType={transaction.depositType as "CR" | "DR"}
+                  />
+                );
+              })}
           </RecentTransactionsCard>
         </RecentTransactionsHoler>
       </Container>
@@ -126,7 +129,7 @@ const Dashboard = () => {
         <div>
           <DescriptionTitle>Weekly Activity</DescriptionTitle>
           <BarChartWrapper>
-            <BarChart data={activityData!} />
+            {activityData && <BarChart data={activityData!} />}
           </BarChartWrapper>
         </div>
         <div>
@@ -144,18 +147,19 @@ const Dashboard = () => {
           <QuickTransferContaier>
             <ContactCardWrapper>
               <ContactCardInnerWrapper ref={scrollWrapperRef}>
-                {frequentContacts?.map((contact, index) => {
-                  return (
-                    <ContactCard
-                      key={index}
-                      name={contact.name}
-                      profilePic={contact.profilePicture}
-                      role={contact.role}
-                      selected={selectedIndex === index}
-                      onClick={() => handleSelectContact(index)}
-                    />
-                  );
-                })}
+                {isLoading ? <Loading/>:
+                  frequentContacts?.map((contact, index) => {
+                    return (
+                      <ContactCard
+                        key={index}
+                        name={contact.name}
+                        profilePic={contact.profilePicture}
+                        role={contact.role}
+                        selected={selectedIndex === index}
+                        onClick={() => handleSelectContact(index)}
+                      />
+                    );
+                  })}
               </ContactCardInnerWrapper>
               <RightChevronButton onClick={handleScrollRight}>
                 <RightChevron />

@@ -95,14 +95,17 @@ export const BarChartWrapper = styled.div`
   justify-content: center;
   opacity: 1;
   box-sizing: border-box;
-  margin-right: 30px;
+
+  @media (max-width: 1000px) and (min-width: 769px) {
+    width: calc(100vw - 2rem - 280px);
+  }
   @media (max-width: 768px) {
-    width: calc(100vw - 2rem - 75px);
+    width: calc(100vw - 2rem - 250px);
     height: auto;
   }
 
   @media (max-width: 480px) {
-    width: 100%;
+    width: calc(100vw - 3rem);
     background-color: transparent;
     height: auto;
   }
@@ -145,9 +148,11 @@ export const QuickTransferContaier = styled.div`
     height: 276px;
   }
   @media (max-width: 480px) {
-    width: 380px;
-    height: 195px;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
     background: transparent;
+    padding: 20px;
     margin-right: 0px;
   }
 `;
@@ -284,8 +289,11 @@ export const LineChartWrapper = styled.div`
   background: white;
   padding: 35px 25px;
   box-sizing: border-box;
+  @media (max-width: 1000px) and (min-width: 769px) {
+    width: calc(100vw - 2rem - 280px);
+  }
   @media (max-width: 768px) {
-    width: calc(100vw - 2rem - 75px);
+    width: calc(100vw - 2rem - 250px);
     height: auto;
   }
 

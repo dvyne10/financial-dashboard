@@ -11,12 +11,13 @@ export const NavbarContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 20px;
+  padding-inline: 1rem;
   box-sizing: border-box;
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     flex-direction: column;
     padding-block: 20px;
-    height:auto
+    height: auto;
+    padding-inline: 1rem;
   }
 `;
 
@@ -46,11 +47,11 @@ export const NavItem = styled.div`
   width: 100%;
   margin: 0;
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    max-width: 84%;
+    max-width: 100%;
   }
-    @media (max-width: 1000px) and (min-width: 769px) {
+  @media (max-width: 1000px) and (min-width: 769px) {
     // width: calc(100% - 250px - 2rem)
-    }
+  }
 `;
 
 export const NavElement = styled.p`
@@ -58,5 +59,8 @@ export const NavElement = styled.p`
   font-size: 28px;
   display: flex;
   flex-direction: row;
-  flex-grow:1
+  color: ${({ theme }) => theme.colors.descriptionHeaderText};
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 20px;
+  }
 `;

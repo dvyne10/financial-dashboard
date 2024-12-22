@@ -31,8 +31,8 @@ const BarChart: React.FC<{
         backgroundColor: theme.colors.barBlack,
         borderRadius: 30,
         borderSkipped: false,
-        barPercentage: theme.breakpoints.mobile ? 0.5 : 0.6,
-        categoryPercentage: theme.breakpoints.mobile ? 0.4 : 0.5,
+        barPercentage: theme.breakpoints.tablet ? 0.5 : 0.6,
+        categoryPercentage: theme.breakpoints.tablet ? 0.4 : 0.5,
       },
       {
         label: "Withdraws",
@@ -40,8 +40,8 @@ const BarChart: React.FC<{
         backgroundColor: theme.colors.barBlue,
         borderRadius: 30,
         borderSkipped: false,
-        barPercentage: theme.breakpoints.mobile ? 0.5 : 0.6,
-        categoryPercentage: theme.breakpoints.mobile ? 0.4 : 0.5,
+        barPercentage: theme.breakpoints.tablet ? 0.5 : 0.6,
+        categoryPercentage: theme.breakpoints.tablet ? 0.4 : 0.5,
       },
     ],
   };

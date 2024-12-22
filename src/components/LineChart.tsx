@@ -4,7 +4,7 @@ import { Line } from "react-chartjs-2";
 import { useUserData } from "../hooks/useUserData";
 
 const LineChart = () => {
-  const { balanceHistory } = useUserData();
+  const { isLoading, balanceHistory } = useUserData();
   function createGradient(ctx: CanvasRenderingContext2D) {
     const gradient = ctx.createLinearGradient(0, 0, 0, 250);
 
@@ -69,7 +69,11 @@ const LineChart = () => {
       },
     },
   } as ChartOptions<"line">;
-  return <Line data={chartData} options={chartOptions} />;
+  return balanceHistory ? (
+    <Line data={chartData} options={chartOptions} />
+  ) : (
+    <></>
+  );
 };
 
 export default LineChart;

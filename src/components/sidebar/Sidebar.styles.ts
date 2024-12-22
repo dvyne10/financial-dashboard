@@ -29,11 +29,12 @@ export const SidebarHeader = styled.div<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
   padding: 1rem;
+  // padding-block:1rem;
   padding-left: 3rem;
   font-size: 1.2rem;
   font-weight: 800;
   gap: 1rem;
-  height: 100px;
+  height: 69px;
   > p {
     display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   }
