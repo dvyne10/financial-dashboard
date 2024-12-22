@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles, theme } from "./styles";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { routes } from "./routes";
 import Sidebar from "./components/sidebar/Sidebar";
 import Navbar from "./components/navbar/Navbar";
@@ -54,6 +54,7 @@ function App() {
                   }
                 >
                   <Routes>
+                  <Route path="/" element={<Navigate to="/overview" />} />
                     {routes.map((route, index) => (
                       <Route
                         key={index}
