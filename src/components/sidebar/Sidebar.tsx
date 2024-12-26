@@ -32,20 +32,22 @@ const Sidebar: React.FC = () => {
         <SidebarToggle onClick={toggleSidebar}>
           <TaskLogoSvg />
         </SidebarToggle>
-        <p
-          style={{
-            display: isSideNavOpen ? "block" : "none",
-            color: theme.colors.descriptionHeaderText,
-          }}
-        >
-          Soar Task
-        </p>
-        {isMobile && (
-          <RightChevron
-            style={{ transform: "rotate(180deg)" }}
-            onClick={closeSidebar}
-          />
-        )}
+        <div style={{display:"flex",alignItems:'center',justifyContent:'space-between',flex:1}}>
+          <p
+            style={{
+              display: isSideNavOpen ? "block" : "none",
+              color: theme.colors.descriptionHeaderText,
+            }}
+          >
+            Soar Task
+          </p>
+          {isMobile && (
+            <RightChevron
+              style={{ transform: "rotate(180deg)",marginRight:10 }}
+              onClick={closeSidebar}
+            />
+          )}
+        </div>
       </SidebarHeader>
 
       <SidebarMenu>
@@ -54,6 +56,7 @@ const Sidebar: React.FC = () => {
             key={index}
             to={item.path}
             style={{ textDecoration: "none", color: "inherit" }}
+            onClick={()=>closeSidebar()}
           >
             <SidebarMenuItem $active={location.pathname === item.path}>
               {item.icon && item.icon(location.pathname === item.path)}

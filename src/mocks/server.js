@@ -206,10 +206,10 @@ export const handlers = [
   }),
   http.get("/api/expenseDistribution", (req, res, ctx) => {
     return Response.json([
-      { label: "Entertainment", val: "30" },
-      { label: "Investment", val: "20" },
-      { label: "Bill Expense", val: "15" },
-      { label: "Others", val: "35" },
+      { label: "Entertainment", val: "22" },
+      { label: "Investment", val: "24" },
+      { label: "Bill Expense", val: "28" },
+      { label: "Others", val: "26" },
     ]);
   }),
 ];
