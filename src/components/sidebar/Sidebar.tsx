@@ -56,7 +56,7 @@ const Sidebar: React.FC = () => {
             key={index}
             to={item.path}
             style={{ textDecoration: "none", color: "inherit" }}
-            onClick={()=>closeSidebar()}
+            onClick={()=>isMobile&&closeSidebar()}
           >
             <SidebarMenuItem $active={location.pathname === item.path}>
               {item.icon && item.icon(location.pathname === item.path)}
