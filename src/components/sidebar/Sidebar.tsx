@@ -39,7 +39,7 @@ const Sidebar: React.FC = () => {
               color: theme.colors.descriptionHeaderText,
             }}
           >
-            Soar Task
+            FinBoard
           </p>
           {isMobile && (
             <RightChevron
